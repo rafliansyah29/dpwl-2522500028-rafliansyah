@@ -1,4 +1,5 @@
 # dpwl-2522500028-rafliansyah
 Selamat datang di repositori Rafliansyah untuk mata kuliah DPWL
-<p> NIM: 2522500028 </p> <p>Nama Lengkap: Muhammad Rafliansyah Putra </p>
-<p>Kelompok: SI3A </p>
+NIM: 2522500028
+Nama Lengkap: Muhammad Rafliansyah Putra
+Kelompok: SI3A
