@@ -7,7 +7,7 @@ jawab: PWD merupakan Pemograman Web Dasar yang dimana mahasiswa mengenal pertama
 jawab: PHP merupakan penggabungan antara logika, koneksi *database*, dan tampilan **html** dalam satu file yang sama, sedangkan *MVC* merupakana dipisah menjadi tiga bagian *Model* (database), *View* (tampilan), *controller* (logika)
 
 3. fungsi Model, View, dan Controller
-Jawab:fungsi model adalah mengelola data
+Jawab: fungsi model adalah mengelola data
        fungsi view adalah mengatur tampilan data
        fungsi controller adalah penghubung antara model dan view
 
