@@ -103,9 +103,9 @@ Pengujian juga dilakukan pada beberapa route, seperti `/`, `home/index`, `home/i
 ## 8. Bukti Tangkapan Layar
 Sisipkan gambar yang relevan dari folder dokumentasi/ dengan perintah:
 ### Gambar 1. Hasil Pengujian Halaman Utama
-![Gambar 1 - Halaman Utama](dokumentasi/gambar1.png)
+![Gambar 1 - Halaman Utama](gambar1.png)
 ### Gambar 2. Hasil Pengujian Custom Route
-![Gambar 2 - Custom Route](dokumentasi/gambar2.png)
+![Gambar 2 - Custom Route](gambar2.png)
 
 ## 9. Kesimpulan P2
 Pada P2, kerangka **MVC** sudah dapat mengatur alur aplikasi melalui **Front Controller, Router, Controller, dan View**. Pada P3, akan ditambahkan **Model dan database** serta pengembangan fitur agar aplikasi lebih dinamis.
