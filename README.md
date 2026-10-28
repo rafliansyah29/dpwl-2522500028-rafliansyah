@@ -6,4 +6,3 @@ Nama Lengkap: Muhammad Rafliansyah Putra<br>
 Kelompok: SI3A Tahun ajaran 2026/2026<br>
 ![logo ISBAL](logoisbal.png)
 
-robocopy C:\laragon\www\dpwl-nim C:\laragon\www\dpwl-nim-nama\pertemuan-02 /E
