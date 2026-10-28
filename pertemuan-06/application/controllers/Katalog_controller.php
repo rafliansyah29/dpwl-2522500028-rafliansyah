@@ -14,4 +14,15 @@ $data = [
 ];
 $this->view('katalog/index', $data);
 }
+public function detail(string $noPlat): void
+{
+$mobil = $this->mobilModel->findByNoPlat($noPlat);
+if ($mobil === null) {
+http_response_code(404);
+exit('Kendaraan tidak ditemukan.');
+}
+$this->view('katalog/detail', [
+'mobil' => $mobil
+]);
+}
 }
