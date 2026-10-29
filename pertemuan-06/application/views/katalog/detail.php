@@ -123,7 +123,7 @@ Number(item.dataset.index) === indeksAktif
 );
 item.classList.toggle(
 'border-success',
-Number(item.dataset.index) === indeksAktif
+Number(item.dataset.index)=== indeksAktif
 );
 });
 }

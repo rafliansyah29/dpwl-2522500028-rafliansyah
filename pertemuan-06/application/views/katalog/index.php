@@ -118,6 +118,7 @@ alt="Kategori SUV">
 <a href="#katalog" class="btn btn-success">Lihat Kendaraan</a>
 </p>
 </div>
+
 <div class="col-12 col-md-4 p-5 mt-3">
 <a href="#katalog">
 <img
@@ -192,6 +193,7 @@ ENT_QUOTES,
 ) ?>">
 
 </a>
+
 <?php else: ?>
 <div class="katalog-foto-kosong">
 <span>Foto kendaraan belum tersedia</span>
@@ -247,6 +249,7 @@ Rp <?= number_format(
 '.'
 ) ?> / hari
 </p>
+
 <p class="mb-3">
 <strong>Status:</strong>
 <?php if ($mobil['status_unit'] === 'tersedia'): ?>
