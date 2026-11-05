@@ -58,7 +58,7 @@ fa-search"></i>
 </li>
 <li>
 <a href="<?= htmlspecialchars(site_url('admin/mobil'), ENT_QUOTES, 'UTF-8') ?>">
-<i class="fa fa-car"></i> <span>Manajemen Penyewaan</span>
+<i class="fa fa-user"></i> <span>Manajemen Penyewaan</span>
 </a>
 </li>
 <!--/ ditambahkan pada P5-->
