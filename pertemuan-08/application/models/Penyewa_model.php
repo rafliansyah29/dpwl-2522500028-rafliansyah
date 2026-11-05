@@ -264,4 +264,92 @@ class Penyewa_model
 
         return $success;
     }
+    // P8: ubah data oleh admin. user_plg adalah kunci, tidak diubah.
+  // Nilai foto yang dikirim adalah nilai akhir (lama atau baru).
+  public function updateByAdmin(
+    string $userPlg,
+    string $nik,
+    string $nama,
+    string $noHp,
+    string $alamat,
+    ?string $ftKtp,
+    ?string $ftSimA,
+    ?string $passwordHash
+  ): bool {
+    if ($passwordHash !== null) {
+      $stmt = $this->db->prepare(
+        "UPDATE t_penyewa
+         SET nik=?, nm_lngkp=?, no_hp=?, almt_lngkp=?, ft_ktp=?, ft_sim_a=?, sandi=?
+         WHERE user_plg=?"
+      );
+      $stmt->bind_param('ssssssss', $nik, $nama, $noHp, $alamat, $ftKtp, $ftSimA, $passwordHash, $userPlg);
+    } else {
+      $stmt = $this->db->prepare(
+        "UPDATE t_penyewa
+         SET nik=?, nm_lngkp=?, no_hp=?, almt_lngkp=?, ft_ktp=?, ft_sim_a=?
+         WHERE user_plg=?"
+      );
+      $stmt->bind_param('sssssss', $nik, $nama, $noHp, $alamat, $ftKtp, $ftSimA, $userPlg);
+    }
+    $success = $stmt->execute();
+    $stmt->close();
+    return $success;
+  }
+    // P8: cek NIK sudah dipakai penyewa lain
+  public function nikDipakai(string $nik, string $exceptUserPlg = ''): bool
+  {
+    $stmt = $this->db->prepare("SELECT COUNT(*) FROM t_penyewa WHERE nik = ? AND user_plg <> ?");
+    $stmt->bind_param('ss', $nik, $exceptUserPlg);
+    $stmt->execute();
+    $stmt->bind_result($n);
+    $stmt->fetch();
+    $stmt->close();
+    return (int) $n > 0;
+  }
+
+  // P8: hapus penyewa
+  public function delete(string $userPlg): bool
+  {
+    $stmt = $this->db->prepare("DELETE FROM t_penyewa WHERE user_plg = ?");
+    $stmt->bind_param('s', $userPlg);
+    $success = $stmt->execute();
+    $stmt->close();
+    return $success;
+  }
+    // P8: seluruh penyewa untuk tabel admin (tanpa hash sandi)
+  public function getAll(): array
+  {
+    $stmt = $this->db->prepare(
+      "SELECT user_plg, nik, nm_lngkp, no_hp, almt_lngkp, ft_ktp, ft_sim_a
+       FROM t_penyewa
+       ORDER BY nm_lngkp ASC"
+    );
+    if (!$stmt) {
+      throw new RuntimeException('Query daftar penyewa gagal disiapkan.');
+    }
+    $stmt->execute();
+    $rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    return $rows;
+  }
+
+  // P8: tambah penyewa oleh admin (termasuk foto KTP/SIM bila diunggah)
+  public function createByAdmin(array $d, ?string $ftKtp, ?string $ftSimA): bool
+  {
+    $stmt = $this->db->prepare(
+      "INSERT INTO t_penyewa (user_plg, sandi, nik, nm_lngkp, no_hp, almt_lngkp, ft_ktp, ft_sim_a)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    );
+    if (!$stmt) {
+      throw new RuntimeException('Query tambah penyewa gagal disiapkan.');
+    }
+    $stmt->bind_param(
+      'ssssssss',
+      $d['user_plg'], $d['sandi'], $d['nik'], $d['nm_lngkp'],
+      $d['no_hp'], $d['almt_lngkp'], $ftKtp, $ftSimA
+    );
+    $success = $stmt->execute();
+    $stmt->close();
+    return $success;
+  }
 }

@@ -35,3 +35,8 @@ $route['transaksi/perbarui-periode'] = 'Transaksi_controller/perbaruiPeriode';
 $route['transaksi/hapus'] = 'Transaksi_controller/hapus';
 $route['transaksi/hapus/(:any)'] = 'Transaksi_controller/hapus/$1';
 $route['transaksi/checkout'] = 'Transaksi_controller/checkout';
+// Route Master Penyewa
+$route['admin/npenyewa'] = 'Npenyewa_controller/index';
+$route['admin/npenyewa/tambah'] = 'Npenyewa_controller/tambah';
+$route['admin/npenyewa/ubah/(:any)'] = 'Npenyewa_controller/ubah/$1';
+$route['admin/npenyewa/hapus/(:any)'] = 'Npenyewa_controller/hapus/$1';
