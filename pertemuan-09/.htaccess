@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /dpwl-2522500028/
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# B = escape backreference agar spasi tetap aman di query string
+RewriteRule ^(.*)$ index.php?route=$1 [QSA,L,B]
